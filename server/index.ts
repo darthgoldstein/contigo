@@ -1,3 +1,1 @@
-import { createApp } from './app';
-
-createApp();
+export * from './app';

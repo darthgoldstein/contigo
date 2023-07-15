@@ -10,6 +10,6 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "start-dev": "ts-node server"
+    "start-dev": "ts-node index.ts"
   }
 }
