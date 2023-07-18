@@ -5,7 +5,7 @@ export const startApp = () => {
   const app = express();
 
   app.get('/', (_, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'web', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'web', 'index.html'));
   });
 
   app.listen(3000, () => {

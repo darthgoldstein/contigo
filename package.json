@@ -10,6 +10,8 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "start-dev": "ts-node index.ts"
+    "install:client": "cd client && npm i",
+    "start-dev:server": "ts-node index.ts",
+    "start-dev:mobile": "cd mobile && npm start"
   }
 }
