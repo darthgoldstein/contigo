@@ -1,36 +1,25 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeIcon } from './screens/home/HomeIcon';
-import { HomeScreen } from './screens/home/HomeScreen';
-import { ProfileIcon } from './screens/profile/ProfileIcon';
-import { ProfileScreen } from './screens/profile/ProfileScreen';
-import { ChatIcon } from './screens/chat/ChatIcon';
-import { ChatScreen } from './screens/chat/ChatScreen';
-
-const Tab = createBottomTabNavigator();
+import { LoginScreen } from './screens/login/LoginScreen';
+import { MainScreen } from './screens/main/MainScreen';
+import { login } from './api/auth-requests';
 
 const App = () => {
+  const [profile, setProfile] = useState<ContigoProfile>(null);
+
+  const onLogin = async (user: string, pass: string) => {
+    const retrievedProfile = await login(user, pass);
+    setProfile(retrievedProfile);
+  };
+
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
-        <Tab.Screen
-          options={{ tabBarIcon: HomeIcon }}
-          name="Home"
-          component={HomeScreen}
-        />
-        <Tab.Screen
-          options={{ tabBarIcon: ChatIcon }}
-          name="Chat"
-          component={ChatScreen}
-        />
-        <Tab.Screen
-          options={{ tabBarIcon: ProfileIcon }}
-          name="Profile"
-          component={ProfileScreen}
-        />
-      </Tab.Navigator>
+      {profile ? (
+        <MainScreen />
+      ) : (
+        <LoginScreen onLogin={onLogin} profile={profile} />
+      )}
+      <MainScreen />
     </NavigationContainer>
   );
 };
