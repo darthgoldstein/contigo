@@ -21,10 +21,24 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.goldstudio.contigo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-dev-launcher",
+        {
+          "launchModeExperimental": "most-recent"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8de713f2-34d3-4cb2-bc52-c7930c897c86"
+      }
     }
   }
 }
